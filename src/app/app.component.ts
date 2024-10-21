@@ -12,6 +12,8 @@ export class AppComponent {
 	nuevoTitulo: string = '';
 	nuevaDuracion: number = null;
 	tareasSeleccionadas: Set<number> = new Set();
+	columnaOrdenar: string = '';
+	ordenAscendente: boolean = true;
 
 	constructor(
         public service: AppService,
@@ -51,5 +53,37 @@ export class AppComponent {
 		});
 		this.tareasSeleccionadas.clear();
 		console.log(this.tareas)
+	}
+
+	async ordenarTabla(columna: string) {
+		if (this.columnaOrdenar === columna) {
+			this.ordenAscendente = !this.ordenAscendente;
+		} else {
+			this.columnaOrdenar = columna;
+			this.ordenAscendente = true;
+		}
+	
+		this.tareas.sort((tarea1, tarea2) => {
+			const valor1 = tarea1[columna];
+			const valor2 = tarea2[columna]; 
+	
+			if (this.ordenAscendente) {
+				if (valor1 > valor2) {
+					return 1;
+				} else if (valor1 < valor2) {
+					return -1;
+				} else {
+					return 0;
+				}
+			} else {
+				if (valor1 < valor2) {
+					return 1;
+				} else if (valor1 > valor2) {
+					return -1;
+				} else {
+					return 0;
+				}
+			}
+		});
 	}
 }
