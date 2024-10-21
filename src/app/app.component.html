@@ -7,6 +7,7 @@
 		<button (click)="agregarTarea()">Agregar tarea</button>
 		<button (click)="eliminarTareas()" [disabled]="tareasSeleccionadas.size === 0">Eliminar Tarea</button>
 		<button (click)="marcarComoDestacadas()" [disabled]="tareasSeleccionadas.size === 0">Destacadas</button>
+		<button (click)="mezclarTareas()">Mezclar tareas</button>
 	</div>
 
 	<table>

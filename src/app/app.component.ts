@@ -93,4 +93,8 @@ export class AppComponent {
 			this.tareasDestacadas.add(id);
 		});
 	}
+
+	async mezclarTareas() {
+		this.tareas.sort(() => Math.random() - 0.5);
+	}	
 }
