@@ -10,12 +10,16 @@
 	<table>
 		<thead>
 		  <tr>
+			<th>Seleccionar</th>
 			<th>Título</th>
 			<th>Duración</th>
 		  </tr>
 		</thead>
 		<tbody>
 		  <tr *ngFor="let tarea of tareas">
+			<td>
+				<input type="checkbox" (change)="seleccionarTarea(tarea.id)" />
+			</td>
 			<td>{{tarea.titulo}}</td>
 			<td>{{tarea.minutos}}</td>
 		  </tr>

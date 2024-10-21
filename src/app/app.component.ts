@@ -11,6 +11,7 @@ export class AppComponent {
 	tareas: Tarea[];
 	nuevoTitulo: string = '';
 	nuevaDuracion: number = null;
+	tareasSeleccionadas: Set<number> = new Set();
 
 	constructor(
         public service: AppService,
@@ -34,4 +35,12 @@ export class AppComponent {
 		  alert('Por favor complete ambos campos.');
 		}
 	  }
+	
+	  async seleccionarTarea(id: number) {
+		if (this.tareasSeleccionadas.has(id)) {
+			this.tareasSeleccionadas.delete(id);
+		} else {
+			this.tareasSeleccionadas.add(id);
+		}
+	}
 }
