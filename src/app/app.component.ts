@@ -14,6 +14,7 @@ export class AppComponent {
 	tareasSeleccionadas: Set<number> = new Set();
 	columnaOrdenar: string = '';
 	ordenAscendente: boolean = true;
+	tareasDestacadas: Set<number> = new Set();
 
 	constructor(
         public service: AppService,
@@ -84,6 +85,12 @@ export class AppComponent {
 					return 0;
 				}
 			}
+		});
+	}
+
+	async marcarComoDestacadas() {
+		this.tareasSeleccionadas.forEach(id => {
+			this.tareasDestacadas.add(id);
 		});
 	}
 }

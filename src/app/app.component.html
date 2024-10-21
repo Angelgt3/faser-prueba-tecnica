@@ -6,6 +6,7 @@
 		<input type="number" [(ngModel)]="nuevaDuracion" placeholder="Duración" />
 		<button (click)="agregarTarea()">Agregar tarea</button>
 		<button (click)="eliminarTareas()" [disabled]="tareasSeleccionadas.size === 0">Eliminar Tarea</button>
+		<button (click)="marcarComoDestacadas()" [disabled]="tareasSeleccionadas.size === 0">Destacadas</button>
 	</div>
 
 	<table>
@@ -18,11 +19,11 @@
 		</thead>
 		<tbody>
 		  <tr *ngFor="let tarea of tareas">
-			<td>
+			<td [ngClass]="{'destacada': tareasDestacadas.has(tarea.id)}">
 				<input type="checkbox" (change)="seleccionarTarea(tarea.id)" />
 			</td>
-			<td>{{tarea.titulo}}</td>
-			<td>{{tarea.minutos}}</td>
+			<td [ngClass]="{'destacada': tareasDestacadas.has(tarea.id)}">{{ tarea.titulo }}</td>
+			<td [ngClass]="{'destacada': tareasDestacadas.has(tarea.id)}">{{tarea.minutos}}</td>
 		  </tr>
 		</tbody>
 	  </table>
