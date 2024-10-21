@@ -5,6 +5,7 @@
 		<input type="text" [(ngModel)]="nuevoTitulo" placeholder="Título de la tarea" />
 		<input type="number" [(ngModel)]="nuevaDuracion" placeholder="Duración" />
 		<button (click)="agregarTarea()">Agregar tarea</button>
+		<button (click)="eliminarTareas()" [disabled]="tareasSeleccionadas.size === 0">Eliminar Tarea</button>
 	</div>
 
 	<table>

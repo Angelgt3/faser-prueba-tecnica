@@ -36,11 +36,20 @@ export class AppComponent {
 		}
 	  }
 	
-	  async seleccionarTarea(id: number) {
+	async seleccionarTarea(id: number) {
 		if (this.tareasSeleccionadas.has(id)) {
 			this.tareasSeleccionadas.delete(id);
 		} else {
 			this.tareasSeleccionadas.add(id);
 		}
+	}
+
+	async eliminarTareas() {
+		this.tareas = this.tareas.filter(tarea => {
+			const tarearestantes = !this.tareasSeleccionadas.has(tarea.id);
+			return tarearestantes;
+		});
+		this.tareasSeleccionadas.clear();
+		console.log(this.tareas)
 	}
 }
