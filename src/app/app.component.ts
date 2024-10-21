@@ -9,6 +9,8 @@ import { Tarea } from './tarea';
 })
 export class AppComponent {
 	tareas: Tarea[];
+	nuevoTitulo: string = '';
+	nuevaDuracion: number = null;
 
 	constructor(
         public service: AppService,
@@ -21,4 +23,15 @@ export class AppComponent {
 	async obtenerTareas() {
 		this.tareas = await this.service.obtenerTareas();
 	}
+
+	async agregarTarea() {
+		if (this.nuevoTitulo && this.nuevaDuracion) {
+		  const nuevaTarea = new Tarea(this.tareas.length + 1, this.nuevoTitulo, this.nuevaDuracion);
+		  this.tareas.push(nuevaTarea);
+		  this.nuevoTitulo = '';
+		  this.nuevaDuracion = null;
+		} else {
+		  alert('Por favor complete ambos campos.');
+		}
+	  }
 }
